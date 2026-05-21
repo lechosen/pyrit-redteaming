@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pyrit
+python-dotenv
+azure-ai-inference
+azure-identity
+pydantic-settings
