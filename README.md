@@ -29,7 +29,7 @@ Background Task: PyRIT RedTeamingAttack
 
 ---
 
-It supports:
+It will support:
 
 - **Multiple model endpoints** (Azure OpenAI, OpenAI API–compatible models, DeepSeek, etc.) via `OpenAIChatTarget` [1](https://azure.github.io/PyRIT/code/executor/attack/0_attack.html)  
 - **Multi‑turn attacks** using PyRIT strategies like *CrescendoAttack* [2](https://azure.github.io/PyRIT/code/datasets/2_seed_programming.html)  
