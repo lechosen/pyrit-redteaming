@@ -2,6 +2,21 @@
 # PyRIT Multi‑Model Red Team API
 
 This service provides a FastAPI wrapper around **Microsoft PyRIT** — the Python Risk Identification Tool for generative AI — enabling automated **multi‑model**, **multi‑turn**
+
+Client (curl / Swagger)
+        ↓
+FastAPI app (uvicorn)
+  ├── POST /attacks/multi-turn   → fires background task, returns run_id immediately
+  └── GET  /results/{run_id}/*  → queries SQLite (pyrit.db) for results
+
+Background task:
+  RedTeamingAttack (PyRIT)
+    ├── Adversarial target  (OllamaChatTarget, temp=0.8)  — generates attack prompts
+    ├── Objective target    (OllamaChatTarget, temp=0.3)  — the model under test
+    └── Evaluator/Scorer    (OllamaJsonTarget)            — scores each response as true/false
+
+
+
 It supports:
 
 - **Multiple model endpoints** (Azure OpenAI, OpenAI API–compatible models, DeepSeek, etc.) via `OpenAIChatTarget` [1](https://azure.github.io/PyRIT/code/executor/attack/0_attack.html)  
