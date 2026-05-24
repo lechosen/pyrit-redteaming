@@ -6,16 +6,14 @@ This service provides a FastAPI wrapper around **Microsoft PyRIT** — the Pytho
 Client (curl / Swagger)
         ↓
 FastAPI app (uvicorn)
-  ├── POST /attacks/multi-turn   → fires background task, returns run_id immediately
-  └── GET  /results/{run_id}/*  → queries SQLite (pyrit.db) for results
+├── POST /attacks/multi-turn   → fires background task, returns run_id immediately
+└── GET  /results/{run_id}/*  → queries SQLite (pyrit.db) for results
 
 Background task:
   RedTeamingAttack (PyRIT)
     ├── Adversarial target  (OllamaChatTarget, temp=0.8)  — generates attack prompts
     ├── Objective target    (OllamaChatTarget, temp=0.3)  — the model under test
     └── Evaluator/Scorer    (OllamaJsonTarget)            — scores each response as true/false
-
-
 
 It supports:
 
